@@ -1,0 +1,10 @@
+Package: cn.oakdb.cadmouse
+Version: 0.6.6
+Installed-Size:520
+Section: utils
+Priority: optional
+Depends: systemd, libhidapi-hidraw0, libqt5core5a, libqt5gui5, libqt5widgets5, libqt5concurrent5
+Maintainer: Megusta<Jetcser@gmail.com>
+Homepage: https://mouse.globalcode.info
+Architecture: amd64
+Description: The CadMouse Utility is an independent free tool for configuring 3DConnexion CadMouse.

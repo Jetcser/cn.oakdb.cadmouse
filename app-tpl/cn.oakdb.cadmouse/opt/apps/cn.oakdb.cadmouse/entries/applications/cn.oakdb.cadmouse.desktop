@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=CadMouse Utility
+GenericName=CadMouse Utility
+Comment=Utility for 3Dconnexion CadMouse
+Exec=/opt/apps/cn.oakdb.cadmouse/files/cadmouse-gui
+Icon=cn.oakdb.cadmouse
+Categories=Settings;HardwareSettings;Utility;
+Terminal=false
+StartupNotify=true

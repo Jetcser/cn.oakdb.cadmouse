@@ -1,0 +1,24 @@
+# 1. 基础识别
+SUBSYSTEM=="hidraw", KERNEL=="hidraw*", ATTRS{idVendor}=="256f", IMPORT{builtin}="usb_id"
+
+# 2. 管理接口核心逻辑：权限、链接、服务触发
+# 包含 01 (主控), 02-04 (接收器多通道)
+SUBSYSTEM=="hidraw", KERNEL=="hidraw*", ATTRS{idVendor}=="256f", \
+    ENV{ID_USB_INTERFACE_NUM}=="01|02|03|04", \
+    ENV{ID_INPUT}="1", TAG+="uaccess", TAG+="systemd"
+
+# 创建管理接口并绑定服务
+SUBSYSTEM=="hidraw", KERNEL=="hidraw*", ATTRS{idVendor}=="256f", \
+    ENV{ID_USB_INTERFACE_NUM}=="01", \
+    SYMLINK+="cadmouse_config", \
+    ENV{SYSTEMD_USER_WANTS}+="cadmouse-heartbeat.service"
+
+# 3. 数据接口：锁定权限
+SUBSYSTEM=="hidraw", KERNEL=="hidraw*", ATTRS{idVendor}=="256f", \
+    ENV{ID_USB_INTERFACE_NUM}=="00", \
+    MODE="0600"
+
+# 4. 接收器初始化（轻量 cadmouse-helper）
+SUBSYSTEM=="hidraw", KERNEL=="hidraw*", ATTRS{idVendor}=="256f", ATTRS{idProduct}=="c652", \
+    ENV{ID_USB_INTERFACE_NUM}=="01", \
+    RUN+="/opt/apps/cn.oakdb.cadmouse/files/cadmouse-helper --init-receiver --config /opt/apps/cn.oakdb.cadmouse/files/cadmouse.conf"

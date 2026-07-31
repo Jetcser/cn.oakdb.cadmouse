@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# $1 = "configure" during installation or upgrade
+if [ "$1" = "configure" ]; then
+    pkill -HUP -f "systemd --user" || true
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=hidraw --attr-match=idVendor=256f || true
+fi
+
+exit 0

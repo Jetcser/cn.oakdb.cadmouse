@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="devices">
+    <file>images/C650.png</file>
+    <file>images/C651.png</file>
+    <file>images/C652.png</file>
+    <file>images/C654.png</file>
+    <file>images/C655.png</file>
+    <file>images/C656.png</file>
+    <file>images/C657.png</file>
+    <file>images/C658.png</file>
+    <file>images/C668.png</file>
+    <file>images/empty.png</file>
+  </qresource>
+</RCC>

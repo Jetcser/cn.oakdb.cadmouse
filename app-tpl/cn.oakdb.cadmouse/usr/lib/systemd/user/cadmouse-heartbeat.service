@@ -1,0 +1,13 @@
+[Unit]
+Description=CadMouse Heartbeat Service
+BindsTo=dev-cadmouse_config.device
+After=dev-cadmouse_config.device
+
+[Service]
+Type=simple
+ExecStart=/opt/apps/cn.oakdb.cadmouse/files/cadmouse-helper --heartbeat --config /opt/apps/cn.oakdb.cadmouse/files/cadmouse.conf
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
